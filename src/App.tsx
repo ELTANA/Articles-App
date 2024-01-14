@@ -8,7 +8,7 @@ import Results from '$screens/Results/Results';
 const rootRoute = new RootRoute({
   component: () => (
     <>
-      <div className="min-h-screen w-full flex flex-col items-stretch justify-stretch container mx-auto px-4">
+      <div className="min-h-screen w-full flex flex-col items-stretch justify-stretch container mx-auto px-3 md:px-4">
         <Header />
         <main className="grow flex flex-col">
           <Outlet />
