@@ -10,7 +10,7 @@ const Pagination: React.FC<PaginationProps> = ({ perPage, total, paginate, curre
   }, [total]);
 
   return (
-    <div className="flex items-center gap-2 w-full justify-center">
+    <div className="flex items-center gap-2 w-full justify-center my-8">
       <button
         className={`cursor-pointer disabled:cursor-not-allowed disabled:text-opacity-25 text-blue-950 font-normal text-base`}
         disabled={currentPage === 1}
