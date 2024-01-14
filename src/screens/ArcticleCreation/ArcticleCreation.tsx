@@ -9,6 +9,7 @@ import { useMutation } from '@tanstack/react-query';
 import { postArticle } from '$network/article';
 import { ARTICLES_KEY } from '$utils/constant';
 import type { Article } from '$utils/global.types';
+import { useNavigate } from '@tanstack/react-router';
 
 const ArcticleCreation: FC = () => {
   //form validation
@@ -31,6 +32,8 @@ const ArcticleCreation: FC = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: postArticle
   });
+
+  const navigate = useNavigate({ from: '/create' });
 
   //
   const createArticle = () =>
@@ -59,7 +62,9 @@ const ArcticleCreation: FC = () => {
         ])
       );
       reset();
+      navigate({ to: '/' });
     });
+
   return (
     <section className="grow py-5 max-w-[768px] w-full mx-auto">
       <h1 className="text-gray-900 text-xl sm:text-4xl mb-2 font-semibold">Create an article</h1>
