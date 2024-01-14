@@ -13,7 +13,7 @@ const Header = () => {
           Results
         </Link>
         <Link
-          className="inline-flex gap-1 items-center bg-blue-100 border-0 py-2 px-4 focus:outline-none hover:bg-blue-200 rounded text-base text-gray-600 font-medium"
+          className="inline-flex gap-1 items-center bg-blue-100 border-0 py-2 px-4 focus:outline-none hover:bg-blue-200 rounded text-base text-gray-800 font-medium"
           href="/create"
         >
           Create
