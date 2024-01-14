@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
+    "@tanstack/react-query": "^5.17.10",
     "@tanstack/react-router": "^1.4.2",
+    "axios": "^1.6.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.49.3",
