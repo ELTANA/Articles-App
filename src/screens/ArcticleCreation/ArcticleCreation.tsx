@@ -13,6 +13,7 @@ const ArcticleCreation: FC = () => {
   const {
     register,
     formState: { errors },
+    reset,
     handleSubmit
   } = useForm<ArticleCreationFormType>({
     mode: 'all',
@@ -25,9 +26,11 @@ const ArcticleCreation: FC = () => {
     }
   });
   //api integration
-  const { mutate } = useMutation({
+  const { mutate, isPending, data } = useMutation({
     mutationFn: postArticle
   });
+
+  console.log(data);
 
   return (
     <section className="grow py-5 max-w-[768px] w-full mx-auto">
@@ -36,13 +39,14 @@ const ArcticleCreation: FC = () => {
         Fill the form with details of your article, so it can be added to the articles list.
       </p>
       <form
-        onSubmit={handleSubmit(({ author, email, phoneNumber, snippet }) => {
+        onSubmit={handleSubmit(async ({ author, email, phoneNumber, snippet }) => {
           mutate({
             author,
             email,
             phoneNumber,
             snippet
           });
+          reset();
         })}
         className="flex flex-col items-start gap-4"
       >
@@ -55,7 +59,7 @@ const ArcticleCreation: FC = () => {
           name="snippet"
           label="Snippet (Max — 300 characters)"
         />
-        <Button type="submit" text="Create Article" />
+        <Button disabled={isPending} loading={isPending} type="submit" text="Create Article" />
       </form>
     </section>
   );
