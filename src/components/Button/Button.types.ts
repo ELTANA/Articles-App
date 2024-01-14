@@ -1,6 +1,6 @@
-import type { HTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 
-export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   text: string;
 }
