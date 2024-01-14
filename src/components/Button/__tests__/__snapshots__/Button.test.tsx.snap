@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component matches snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="text-white shadow-lg bg-blue-500 border-0 py-3 px-6 focus:outline-none hover:bg-blue-600 rounded text-base md:text-lg inline-flex gap-3 items-center font-medium disabled:bg-opacity-40 undefined"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;

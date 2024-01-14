@@ -12,6 +12,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "esModuleInterop": true,
     "jsx": "react-jsx",
 
     /* Linting */
@@ -31,5 +32,6 @@
     }
   },
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "types": ["node", "jest", "@testing-library/jest-dom"]
 }

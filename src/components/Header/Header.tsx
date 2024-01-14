@@ -5,7 +5,10 @@ const Header = () => {
   return (
     <header className="py-10 flex justify-between items-center">
       <Link className="inline-flex gap-2 font-medium items-center text-gray-900" to="/">
-        <ArticlesLogo className="w-7 md:w-10 h-7 md:h-10 text-white p-2 bg-blue-500 rounded-full" />
+        <ArticlesLogo
+          data-test-id="articles-logo"
+          className="w-7 md:w-10 h-7 md:h-10 text-white p-2 bg-blue-500 rounded-full"
+        />
         <span className="text-base md:text-lg">Articles</span>
       </Link>
       <nav className="gap-4 flex flex-wrap items-center text-base justify-center">
