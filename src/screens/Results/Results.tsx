@@ -5,11 +5,15 @@ import { getArticles } from '$network/article';
 import { ARTICLES_KEY } from '$utils/constant';
 import type { Article } from '$utils/global.types';
 import { useQuery } from '@tanstack/react-query';
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 
 const Results: FC = () => {
+  //state
   const [results, setResults] = useState<Article[]>([]);
   const [search, setSearch] = useState('');
+
+  //refs
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   //queries
   const { data, isPending } = useQuery({
@@ -26,7 +30,6 @@ const Results: FC = () => {
           (article) =>
             article.author.toLowerCase().includes(search.toLowerCase()) ||
             article.email.toLowerCase().includes(search.toLowerCase()) ||
-            article.phoneNumber.toLowerCase().includes(search.toLowerCase()) ||
             article.snippet.toLowerCase().includes(search.toLowerCase()) ||
             article.title.toLowerCase().includes(search.toLowerCase())
         )
@@ -41,12 +44,16 @@ const Results: FC = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            if (inputRef) {
+              setSearch(inputRef?.current?.value ?? '');
+            }
           }}
           className="flex flex-col gap-1 items-center w-full"
         >
           <Input
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            // value={search}
+            // onChange={(e) => setSearch(e.target.value)}
+            inputRef={inputRef}
             type="search"
             name="search"
             placeholder="Search"
@@ -55,7 +62,7 @@ const Results: FC = () => {
         </form>
       </div>
       <div className="w-full flex flex-col items-center">
-        <h2 className="sm:text-3xl text-xl font-medium underline mb-3">Results</h2>
+        <h2 className="sm:text-3xl text-xl font-medium underline mb-3">Results {search && `for "${search}"`}</h2>
         {isPending ? (
           <p className="text-center text-base">Loading</p>
         ) : (

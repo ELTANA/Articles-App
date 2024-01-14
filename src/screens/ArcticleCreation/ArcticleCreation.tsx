@@ -23,7 +23,6 @@ const ArcticleCreation: FC = () => {
     defaultValues: {
       author: '',
       email: '',
-      phoneNumber: '',
       snippet: '',
       title: ''
     }
@@ -36,11 +35,10 @@ const ArcticleCreation: FC = () => {
   //
   const createArticle = () =>
     // e.preventDefault();
-    handleSubmit(async ({ author, email, phoneNumber, snippet, title }) => {
+    handleSubmit(async ({ author, email, snippet, title }) => {
       mutate({
         author,
         email,
-        phoneNumber,
         snippet,
         title
       });
@@ -54,7 +52,6 @@ const ArcticleCreation: FC = () => {
           {
             author,
             email,
-            phoneNumber,
             snippet,
             title,
             id: parsedArticles.length
@@ -73,7 +70,6 @@ const ArcticleCreation: FC = () => {
         <Input {...register('author')} error={errors.author} name="author" label="Author" />
         <Input {...register('title')} error={errors.author} name="title" label="Title" />
         <Input {...register('email')} error={errors.email} name="email" label="Email" type="email" />
-        <Input {...register('phoneNumber')} error={errors.phoneNumber} name="phoneNumber" label="Phone number" />
         <TextArea
           {...register('snippet')}
           error={errors.snippet}

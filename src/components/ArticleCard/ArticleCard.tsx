@@ -1,10 +1,9 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { ArticleCardProps } from './ArticleCard.types';
-import Phone from '$svgs/phone';
 import Email from '$svgs/email';
 import { truncateText } from '$utils/functions';
 
-const ArticleCard: FC<ArticleCardProps> = ({ author, email, phoneNumber, snippet, title }) => {
+const ArticleCard: FC<ArticleCardProps> = ({ author, email, snippet, title }) => {
   const [isMore, setIsMore] = useState(true);
   const snippetContainerRef = useRef<HTMLDivElement | null>(null);
   const snippetRef = useRef<HTMLQuoteElement | null>(null);
@@ -49,10 +48,6 @@ const ArticleCard: FC<ArticleCardProps> = ({ author, email, phoneNumber, snippet
           <small className="inline-flex items-center justify-center gap-1">
             <Email />
             <span className="text-xs font-medium">{email}</span>
-          </small>
-          <small className="inline-flex items-center justify-center gap-1">
-            <Phone />
-            <span className="text-xs font-medium">{phoneNumber}</span>
           </small>
         </div>
       </div>

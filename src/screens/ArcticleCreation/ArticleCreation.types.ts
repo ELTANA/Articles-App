@@ -2,7 +2,6 @@ import * as yup from 'yup';
 
 export const articleCreationFormSchema = yup.object({
   email: yup.string().trim().email('The email is not valid').required('This field is required'),
-  phoneNumber: yup.string().trim().required('This field is required'),
   author: yup.string().trim().required('This field is required'),
   title: yup.string().trim().required('This field is required'),
   snippet: yup

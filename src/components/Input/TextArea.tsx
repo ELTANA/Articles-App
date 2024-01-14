@@ -17,7 +17,7 @@ const TextArea: FC<TextAreaProps> = forwardRef<HTMLDivElement, TextAreaProps>(
             ref={textAreaRef}
             name={name}
             id={name}
-            className={`w-full bg-white rounded border text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out resize-none h-[150px] ${error ? 'border-red-600 focus:border-red-700 focus:ring-2 focus:ring-red-700' : 'border-blue-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-200'}`}
+            className={`w-full shadow-sm bg-white rounded border text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out resize-none h-[150px] ${error ? 'border-red-600 focus:border-red-700 focus:ring-2 focus:ring-red-700' : 'border-blue-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-200'}`}
             aria-label={label}
             {...rest}
           ></textarea>
