@@ -1,10 +1,9 @@
 import { Outlet, Router, Route, RootRoute } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
-import Button from '$components/Button/Button';
 import Footer from '$components/Footer/Footer';
 import Header from '$components/Header/Header';
-import Input from '$components/Input/Input';
 import ArcticleCreation from '$screens/ArcticleCreation/ArcticleCreation';
+import Results from '$screens/Results/Results';
 
 const rootRoute = new RootRoute({
   component: () => (
@@ -26,13 +25,7 @@ const indexRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/',
   component: function Index() {
-    return (
-      <div className="p-2">
-        <h3>Welcome Home!</h3>
-        <Button text="Processing..." loading />
-        <Input name="search" type="search" />
-      </div>
-    );
+    return <Results />;
   }
 });
 
