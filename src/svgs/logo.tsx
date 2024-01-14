@@ -10,7 +10,6 @@ export default function ArticlesLogo(props: SVGProps<SVGSVGElement>) {
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth="2"
-      className="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
       viewBox="0 0 24 24"
     >
       <rect width="10" height="10" fill="#fff" x="0" y="0"></rect>
