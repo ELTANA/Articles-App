@@ -1,8 +1,9 @@
 import ArticleCard from '$components/ArticleCard/ArticleCard';
 import Button from '$components/Button/Button';
 import Input from '$components/Input/Input';
+import Pagination from '$components/Pagination/Pagination';
 import { getArticles } from '$network/article';
-import { ARTICLES_KEY } from '$utils/constant';
+import { ARTICLES_KEY, ARTICLES_PER_PAGE } from '$utils/constant';
 import type { Article } from '$utils/global.types';
 import { useQuery } from '@tanstack/react-query';
 import { FC, useEffect, useRef, useState } from 'react';
@@ -11,6 +12,7 @@ const Results: FC = () => {
   //state
   const [results, setResults] = useState<Article[]>([]);
   const [search, setSearch] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
 
   //refs
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -36,6 +38,12 @@ const Results: FC = () => {
       );
     }
   }, [data, search]);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const indexOfLastArticle = currentPage * ARTICLES_PER_PAGE;
+  const indexOfFirstArticle = indexOfLastArticle - ARTICLES_PER_PAGE;
+  const currentArticles = results?.slice(indexOfFirstArticle, indexOfLastArticle);
 
   return (
     <section className="grow flex flex-col items-center">
@@ -67,13 +75,14 @@ const Results: FC = () => {
           <p className="text-center text-base">Loading</p>
         ) : (
           <div className="flex flex-wrap md:-mx-4 -mb-10 text-center w-full justify-start">
-            {results?.map(({ id, ...rest }) => (
+            {currentArticles?.map(({ id, ...rest }) => (
               <div key={id} className="w-full md:w-1/2 lg:w-1/3 mb-10 md:px-4">
                 <ArticleCard {...rest} />
               </div>
             ))}
           </div>
         )}
+        <Pagination currentPage={currentPage} perPage={ARTICLES_PER_PAGE} total={results?.length} paginate={paginate} />
       </div>
     </section>
   );
