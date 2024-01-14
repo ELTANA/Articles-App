@@ -4,4 +4,5 @@ export interface Article {
   phoneNumber: string;
   snippet: string;
   id: string;
+  title: string;
 }
