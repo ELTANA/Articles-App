@@ -1,6 +1,3 @@
-export interface IArticleCardProps {
-  author: string;
-  email: string;
-  phoneNumber: string;
-  snippet: string;
-}
+import type { Article } from 'src/utils/global.types';
+
+export type ArticleCardProps = Omit<Article, 'id'>;
