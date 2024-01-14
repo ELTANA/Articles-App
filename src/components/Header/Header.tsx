@@ -12,14 +12,26 @@ const Header = () => {
         <span className="text-base md:text-lg">Articles</span>
       </Link>
       <nav className="gap-4 flex flex-wrap items-center text-base justify-center">
-        <Link className="text-base truncate text-gray-600 font-medium" to="/">
-          Results
+        <Link className="text-base truncate font-medium" to="/">
+          {({ isActive }) => {
+            return (
+              <>
+                <span className={`${isActive ? 'text-blue-600 ' : 'text-gray-600 '}`}>Results</span>
+              </>
+            );
+          }}
         </Link>
         <Link
           className="inline-flex gap-1 items-center bg-blue-100 border-0 py-2 px-4 focus:outline-none hover:bg-blue-200 rounded text-base text-gray-800 font-medium"
           to="/create"
         >
-          Create
+          {({ isActive }) => {
+            return (
+              <>
+                <span className={`${isActive ? 'text-blue-600 ' : 'text-gray-600 '}`}>Create</span>
+              </>
+            );
+          }}
         </Link>
       </nav>
     </header>
