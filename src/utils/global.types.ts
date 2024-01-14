@@ -3,4 +3,5 @@ export interface Article {
   email: string;
   phoneNumber: string;
   snippet: string;
+  id: string;
 }
