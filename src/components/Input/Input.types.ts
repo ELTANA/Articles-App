@@ -1,9 +1,8 @@
 import { InputHTMLAttributes } from 'react';
-import { FieldError, FieldValues, UseFormRegister } from 'react-hook-form';
+import type { FieldError } from 'react-hook-form';
 
 export interface IInputBaseType {
   label?: string;
-  register?: UseFormRegister<FieldValues>;
   error?: FieldError;
   name: string;
 }
