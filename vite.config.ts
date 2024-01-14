@@ -19,7 +19,8 @@ export default defineConfig({
       $assets: resolve(root, 'assets'),
       $screens: resolve(root, 'screens'),
       $svgs: resolve(root, 'svgs'),
-      $hooks: resolve(root, 'hooks')
+      $hooks: resolve(root, 'hooks'),
+      $network: resolve(root, 'network')
     }
   }
 });

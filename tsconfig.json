@@ -25,7 +25,8 @@
       "$assets/*": ["./src/assets/*"],
       "$screens/*": ["./src/screens/*"],
       "$svgs/*": ["./src/svgs/*"],
-      "$hooks/*": ["./src/hooks/*"]
+      "$hooks/*": ["./src/hooks/*"],
+      "$network/*": ["./src/network/*"]
     }
   },
   "include": ["src"],
