@@ -73,8 +73,8 @@ const ArticleCreation: FC = () => {
       </p>
       <form onSubmit={createArticle()} className="flex flex-col items-start gap-4">
         <Input {...register('author')} error={errors.author} name="author" label="Author's Name" />
-        <Input {...register('title')} error={errors.title} name="title" label="Article's Title" />
         <Input {...register('email')} error={errors.email} name="email" label="Author's Contact Email" type="email" />
+        <Input {...register('title')} error={errors.title} name="title" label="Article's Title" />
         <TextArea
           {...register('snippet')}
           error={errors.snippet}
