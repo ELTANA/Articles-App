@@ -10,7 +10,8 @@ import { postArticle } from '$network/article';
 import { ARTICLES_KEY } from '$utils/constant';
 import type { Article } from '$utils/global.types';
 import { useNavigate } from '@tanstack/react-router';
-
+import { generateUniqueString } from '$utils/functions';
+import toast from 'react-hot-toast';
 const ArticleCreation: FC = () => {
   //form validation
   const {
@@ -29,7 +30,7 @@ const ArticleCreation: FC = () => {
     }
   });
   //api integration
-  const { mutate, isPending } = useMutation({
+  const { mutate, isPending, isSuccess } = useMutation({
     mutationFn: postArticle
   });
 
@@ -57,13 +58,20 @@ const ArticleCreation: FC = () => {
             email,
             snippet,
             title,
-            id: parsedArticles.length
+            id: generateUniqueString()
           }
         ])
       );
       reset();
-      navigate({ to: '/' });
     });
+
+  if (isSuccess) {
+    toast.success('Created Article successfully', {
+      position: 'top-center',
+      duration: 3000
+    });
+    navigate({ to: '/' });
+  }
 
   return (
     <section className="grow py-5 max-w-[768px] w-full mx-auto">
