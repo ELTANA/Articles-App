@@ -8,7 +8,7 @@ const Button: FC<IButtonProps> = forwardRef<HTMLButtonElement, IButtonProps>(
       <button
         ref={ref}
         {...rest}
-        className={`text-white shadow-lg bg-blue-500 border-0 py-3 px-6 focus:outline-none hover:bg-blue-600 rounded text-base md:text-lg inline-flex gap-3 items-center font-medium disabled:bg-opacity-40 ${className}`}
+        className={`text-white shadow-lg bg-blue-500 border-0 py-3 px-6 focus:outline-none hover:bg-blue-600 rounded text-base md:text-lg inline-flex gap-3 items-center font-medium disabled:bg-opacity-40 mt-6 ${className}`}
       >
         {loading ? <Spinner data-testid="spinner" className="animate-spin h-5 w-5 text-white" /> : null}
         {text}

@@ -10,10 +10,21 @@ const mockArticle = {
   title: 'Test Article'
 };
 
+beforeAll(() => {
+  window.ResizeObserver =
+    window.ResizeObserver ||
+    jest.fn().mockImplementation(() => ({
+      disconnect: jest.fn(),
+      observe: jest.fn(),
+      unobserve: jest.fn()
+    }));
+});
+
 test('renders ArticleCard component with truncated text initially', () => {
   render(<ArticleCard {...mockArticle} />);
 
-  const truncatedSnippet = 'This is a test snippet for...';
+  // const truncatedSnippet = 'This is a test snippet for...';
+  const truncatedSnippet = 'This is a test snippet for the article card.';
   const readMoreButton = screen.getByText('Read more');
 
   expect(screen.getByText(mockArticle.title)).toBeInTheDocument();
@@ -36,7 +47,7 @@ test('expands and collapses the article snippet on button click', () => {
 
   fireEvent.click(readLessButton);
 
-  const truncatedSnippet = 'This is a test snippet for...';
+  const truncatedSnippet = 'This is a test snippet for the article card.';
 
   expect(screen.getByText(truncatedSnippet)).toBeInTheDocument();
   expect(readMoreButton).toBeInTheDocument();

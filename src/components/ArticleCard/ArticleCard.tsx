@@ -28,19 +28,18 @@ const ArticleCard: FC<ArticleCardProps> = ({ author, email, snippet, title }) =>
     <article className="w-full min-h-[250px] rounded-lg bg-[aliceblue] transition-all shadow-article-card pt-10 flex flex-col items-start justify-start">
       <div className="text-left w-full flex flex-col justify-between">
         <div className="px-5 flex flex-col items-start gap-3 mb-3">
-          <h3 className="text-lg md:text-2xl font-semibold text-blue-800">{title}</h3>
+          <h3 className="text-lg md:text-xl font-semibold text-blue-800 line-clamp-1 text-ellipsis">{title}</h3>
           <div className="transition-all min-h-[48px]" ref={snippetContainerRef}>
             <blockquote ref={snippetRef} className="leading-relaxed text-base italic break-words">
-              {isMore ? truncatedSnippet?.truncatedTest : snippet}
+              {isMore ? truncatedSnippet?.truncatedTest : snippet}{' '}
+              <button
+                className={`${truncatedSnippet?.isTruncated ? 'visible text-blue-700 font-semibold' : 'invisible'}`}
+                onClick={() => setIsMore((prevIsMore) => !prevIsMore)}
+              >
+                {isMore ? 'Read more' : 'Read less'}
+              </button>
             </blockquote>
           </div>
-
-          <button
-            className={`${truncatedSnippet?.isTruncated ? 'visible' : 'invisible'}`}
-            onClick={() => setIsMore((prevIsMore) => !prevIsMore)}
-          >
-            {isMore ? 'Read more' : 'Read less'}
-          </button>
 
           <h3 className="text-sm font-bold text-gray-900">By {author}</h3>
         </div>

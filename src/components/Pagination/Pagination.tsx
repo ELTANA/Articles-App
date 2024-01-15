@@ -12,7 +12,7 @@ const Pagination: React.FC<PaginationProps> = ({ perPage, total, paginate, curre
   return (
     <div className="flex items-center gap-2 w-full justify-center my-8">
       <button
-        className={`cursor-pointer disabled:cursor-not-allowed disabled:text-opacity-25 text-blue-950 font-normal text-base`}
+        className={`cursor-pointer disabled:cursor-not-allowed bg-blue-500 text-white hover:bg-blue-500 hover:text-white disabled:bg-gray-300 disabled:text-gray-400 disabled:hover:bg-gray-400 disabled:hover:text-gray-500 font-normal text-base py-1 px-4 rounded-sm`}
         disabled={currentPage === 1}
         onClick={() => paginate(currentPage - 1)}
       >
@@ -20,7 +20,7 @@ const Pagination: React.FC<PaginationProps> = ({ perPage, total, paginate, curre
       </button>
       {Array.from({ length: noOfPages }).map((_, index) => (
         <button
-          className={`cursor-pointer w-7   h-7   flex items-center justify-center  ${currentPage === index + 1 ? 'border-blue-900' : 'border-gray-800'} border ${currentPage === index + 1 ? 'text-blue-900' : 'text-gray-800'} ${currentPage === index + 1 ? 'font-normal' : 'font-normal'} text-base`}
+          className={`cursor-pointer hover:bg-blue-500 hover:text-white disabled:hover:bg-gray-500 disabled:hover:text-gray-700 py-1 rounded-sm px-4 font-normal text-base  ${currentPage === index + 1 ? 'bg-blue-800 text-white' : 'bg-blue-500 text-white'}`}
           key={index}
           onClick={() => paginate(index + 1)}
         >
@@ -28,7 +28,7 @@ const Pagination: React.FC<PaginationProps> = ({ perPage, total, paginate, curre
         </button>
       ))}
       <button
-        className={`cursor-pointer disabled:cursor-not-allowed disabled:text-opacity-25 text-blue-950 font-normal text-base`}
+        className={`cursor-pointer disabled:cursor-not-allowed bg-blue-500 text-white hover:bg-blue-500 hover:text-white disabled:bg-gray-300 disabled:text-gray-400 disabled:hover:bg-gray-400 disabled:hover:text-gray-500 font-normal text-base py-1 px-4 rounded-sm`}
         disabled={currentPage === noOfPages}
         onClick={() => paginate(currentPage + 1)}
       >

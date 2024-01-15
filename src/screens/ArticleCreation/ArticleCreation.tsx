@@ -11,7 +11,7 @@ import { ARTICLES_KEY } from '$utils/constant';
 import type { Article } from '$utils/global.types';
 import { useNavigate } from '@tanstack/react-router';
 
-const ArcticleCreation: FC = () => {
+const ArticleCreation: FC = () => {
   //form validation
   const {
     register,
@@ -72,19 +72,19 @@ const ArcticleCreation: FC = () => {
         Fill the form with details of your article, so it can be added to the articles list.
       </p>
       <form onSubmit={createArticle()} className="flex flex-col items-start gap-4">
-        <Input {...register('author')} error={errors.author} name="author" label="Author" />
-        <Input {...register('title')} error={errors.author} name="title" label="Title" />
-        <Input {...register('email')} error={errors.email} name="email" label="Email" type="email" />
+        <Input {...register('author')} error={errors.author} name="author" label="Author's Name" />
+        <Input {...register('title')} error={errors.title} name="title" label="Article's Title" />
+        <Input {...register('email')} error={errors.email} name="email" label="Author's Contact Email" type="email" />
         <TextArea
           {...register('snippet')}
           error={errors.snippet}
           name="snippet"
-          label="Snippet (Max — 300 characters)"
+          label="Article's Snippet (Max — 300 characters)"
         />
-        <Button disabled={isPending} loading={isPending} type="submit" text="Create Article" />
+        <Button disabled={isPending} loading={isPending} type="submit" text="Create Article" role="button" />
       </form>
     </section>
   );
 };
 
-export default ArcticleCreation;
+export default ArticleCreation;

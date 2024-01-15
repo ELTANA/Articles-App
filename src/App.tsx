@@ -1,22 +1,22 @@
 import { Outlet, Router, Route, RootRoute } from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/router-devtools';
+// import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import Footer from '$components/Footer/Footer';
 import Header from '$components/Header/Header';
-import ArcticleCreation from '$screens/ArcticleCreation/ArcticleCreation';
+import ArticleCreation from '$screens/ArticleCreation/ArticleCreation';
 import Results from '$screens/Results/Results';
 
 const rootRoute = new RootRoute({
   component: () => (
-    <>
+    <main className="bg-[aliceBlue] min-h-screen">
+      <Header />
       <div className="min-h-screen w-full flex flex-col items-stretch justify-stretch container mx-auto px-3 md:px-4">
-        <Header />
-        <main className="grow flex flex-col">
+        <main className="mt-10 grow flex flex-col">
           <Outlet />
         </main>
         <Footer />
       </div>
-      <TanStackRouterDevtools />
-    </>
+      {/* <TanStackRouterDevtools /> */}
+    </main>
   )
 });
 
@@ -34,7 +34,7 @@ const createRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/create',
   component: function Create() {
-    return <ArcticleCreation />;
+    return <ArticleCreation />;
   }
 });
 

@@ -8,8 +8,8 @@ describe('Pagination component', () => {
 
   const setup = (props: Partial<PaginationProps> = {}) => {
     const defaultProps: PaginationProps = {
-      perPage: 5,
-      total: 20,
+      perPage: 6,
+      total: 24,
       currentPage: 1,
       paginate: mockPaginate
       // Add any other default props here
@@ -22,19 +22,23 @@ describe('Pagination component', () => {
     const { getByText } = setup();
 
     expect(getByText('Prev')).toHaveAttribute('disabled');
-    expect(getByText('1')).toHaveClass('border-blue-900 text-blue-900');
-    expect(getByText('2')).toHaveClass('border-gray-800 text-gray-800');
-    expect(getByText('3')).toHaveClass('border-gray-800 text-gray-800');
-    expect(getByText('4')).toHaveClass('border-gray-800 text-gray-800');
-    expect(getByText('5')).toHaveClass('border-gray-800 text-gray-800');
+    expect(getByText('1')).toHaveClass(
+      'cursor-pointer hover:bg-blue-500 hover:text-white disabled:hover:bg-gray-500 disabled:hover:text-gray-700 py-1 rounded-sm px-4 font-normal text-base bg-blue-800 text-white'
+    );
+    expect(getByText('2')).toHaveClass(
+      'cursor-pointer hover:bg-blue-500 hover:text-white disabled:hover:bg-gray-500 disabled:hover:text-gray-700 py-1 rounded-sm px-4 font-normal text-base bg-blue-500 text-white'
+    );
+    expect(getByText('3')).toHaveClass(
+      'cursor-pointer hover:bg-blue-500 hover:text-white disabled:hover:bg-gray-500 disabled:hover:text-gray-700 py-1 rounded-sm px-4 font-normal text-base bg-blue-500 text-white'
+    );
     expect(getByText('Next')).not.toHaveAttribute('disabled');
   });
 
   test('calls paginate function on button click', () => {
     const { getByText } = setup();
 
-    fireEvent.click(getByText('2'));
-    expect(mockPaginate).toHaveBeenCalledWith(2);
+    fireEvent.click(getByText('3'));
+    expect(mockPaginate).toHaveBeenCalledWith(3);
   });
 
   test('disables Prev button on the first page', () => {

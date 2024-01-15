@@ -6,7 +6,7 @@ import { getArticles } from '$network/article';
 import { ARTICLES_KEY, ARTICLES_PER_PAGE } from '$utils/constant';
 import type { Article } from '$utils/global.types';
 import { useQuery } from '@tanstack/react-query';
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, FormEvent, useEffect, useRef, useState } from 'react';
 
 const Results: FC = () => {
   //state
@@ -45,19 +45,19 @@ const Results: FC = () => {
   const indexOfFirstArticle = indexOfLastArticle - ARTICLES_PER_PAGE;
   const currentArticles = results?.slice(indexOfFirstArticle, indexOfLastArticle);
 
+  const handleSearch = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (inputRef) {
+      setSearch(inputRef?.current?.value ?? '');
+      setCurrentPage(1);
+    }
+  };
+
   return (
     <section className="grow flex flex-col items-center">
       <div className="max-w-[640px] w-full mx-auto mb-12 md:mb-24">
         <h1 className="text-center sm:text-5xl text-3xl mb-4 text-gray-900 font-semibold">Search for articles</h1>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (inputRef) {
-              setSearch(inputRef?.current?.value ?? '');
-            }
-          }}
-          className="flex flex-col gap-1 items-center w-full"
-        >
+        <form onSubmit={handleSearch} className="flex flex-col gap-1 items-center w-full">
           <Input
             // value={search}
             // onChange={(e) => setSearch(e.target.value)}
@@ -66,11 +66,13 @@ const Results: FC = () => {
             name="search"
             placeholder="Search"
           />
-          <Button type="submit" text="Search" />
+          <Button type="submit" text="Search" data-testid="search" />
         </form>
       </div>
       <div className="w-full flex flex-col items-center">
-        <h2 className="sm:text-3xl text-xl font-medium underline mb-3">Results {search && `for "${search}"`}</h2>
+        <h2 className="sm:text-3xl text-xl font-medium underline mb-3 md:mb-10">
+          Results {search && `for "${search}"`}
+        </h2>
         {isPending ? (
           <p className="text-center text-base">Loading</p>
         ) : (
