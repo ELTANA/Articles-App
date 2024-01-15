@@ -83,12 +83,7 @@ const ArticleCreation: FC = () => {
         <Input {...register('author')} error={errors.author} name="author" label="Author's Name" />
         <Input {...register('email')} error={errors.email} name="email" label="Author's Contact Email" type="email" />
         <Input {...register('title')} error={errors.title} name="title" label="Article's Title" />
-        <TextArea
-          {...register('snippet')}
-          error={errors.snippet}
-          name="snippet"
-          label="Article's Snippet (Max — 300 characters)"
-        />
+        <TextArea {...register('snippet')} error={errors.snippet} name="snippet" label="Article's Snippet" />
         <Button disabled={isPending} loading={isPending} type="submit" text="Create Article" role="button" />
       </form>
     </section>
