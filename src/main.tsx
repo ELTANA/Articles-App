@@ -4,6 +4,7 @@ import './index.css';
 import { RouterProvider } from '@tanstack/react-router';
 import router from './App.tsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Toaster } from 'react-hot-toast';
 
 //Create a client
 const queryClient = new QueryClient();
@@ -14,6 +15,7 @@ if (!rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <QueryClientProvider client={queryClient}>
+        <Toaster />
         <RouterProvider router={router} />
       </QueryClientProvider>
     </StrictMode>
