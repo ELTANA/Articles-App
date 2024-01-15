@@ -40,18 +40,6 @@ describe('Input component', () => {
     expect(searchButton).toBeInTheDocument();
   });
 
-  // test('handles user input', () => {
-  //   const handleChange = jest.fn();
-  //   render(<Input label="Test Label" name="testInput" type="text" onChange={handleChange} />);
-
-  //   const inputElement = screen.getByRole('textbox', { name: 'Test Label' });
-
-  //   userEvent.type(inputElement, 'Hello');
-
-  //   expect(handleChange).toHaveBeenCalledTimes(5); // Each keystroke triggers onChange
-  //   expect(inputElement).toHaveValue('Hello');
-  // });
-
   test('handles user input', async () => {
     const handleChange = jest.fn();
     render(<Input label="Test Label" name="testInput" type="text" onChange={handleChange} />);
